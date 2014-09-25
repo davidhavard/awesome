@@ -266,7 +266,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 32 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 27 })
 
     -- Widgets that are aligned to the upper left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -276,25 +276,18 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the upper right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    --right_layout:add(mailwidget)
     right_layout:add(batwidget)
-    right_layout:add(spr_right)
     right_layout:add(netdown_icon)
     right_layout:add(networkwidget)
     right_layout:add(netup_icon)
-    right_layout:add(spr_right)
     right_layout:add(cpu_icon)
     right_layout:add(cpuwidget)
-    right_layout:add(spr_right)
     right_layout:add(mem_icon)
     right_layout:add(memwidget)
-    right_layout:add(spr_right)
     right_layout:add(calendar_icon)
     right_layout:add(calendarwidget)
-    right_layout:add(spr_right)
     right_layout:add(clock_icon)
     right_layout:add(clockwidget)
-    right_layout:add(spr_left)
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
