@@ -47,12 +47,6 @@ function run_once(cmd)
   end
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
-
-run_once("urxvtd")
-run_once("unclutter")
-run_once("compton")
-run_once("devilspie /home/david/.devilspie/opacity.ds")
-
 -- }}}
 
 -- {{{ Variable definitions
@@ -65,15 +59,13 @@ beautiful.init(awful.util.getdir("config") .. "/themes/theme.lua")
 -- common
 modkey     = "Mod1"
 altkey     = "Mod4"
-terminal   = "urxvtc" or "xterm"
-editor     = os.getenv("EDITOR") or "nano" or "vi"
+terminal   = "urxvt" or "xterm"
+editor     = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
-browser    = "dwb"
+browser    = "chromium"
 gui_editor = "gvim"
-graphics   = "gimp"
-musiplr   = terminal .. " -e ncmpcpp "
 
 local layouts = {
     awful.layout.suit.floating,
@@ -133,28 +125,6 @@ calendarwidget = wibox.widget.background()
 calendarwidget:set_widget(mytextcalendar)
 calendarwidget:set_bgimage(beautiful.widget_bg)
 lain.widgets.calendar:attach(calendarwidget, { fg = "#FFFFFF", position = "top_right" })
-
---[[ Mail IMAP chesk
--- commented because it needs to be set before use
-mailwidget = lain.widgets.imap({
-    timeout  = 180,
-    server   = "server",
-    mail     = "mail",
-    password = "keyring get mail",
-    settings = function()
-        mail_notification_preset.fg = white
-        mail  = ""
-        count = ""
-
-        if mailcount > 0 then
-            mail = "Arch "
-            count = mailcount .. " "
-        end
-
-        widget:set_markup(markup(blue, mail) .. markup(white, count))
-    end
-})
-]]
 
 -- Battery
 batwidget = lain.widgets.bat({
@@ -604,6 +574,7 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
+  awful.client.movetoscreen(c, mouse.screen)
     -- Enable sloppy focus
     c:connect_signal("mouse::enter", function(c)
         if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
