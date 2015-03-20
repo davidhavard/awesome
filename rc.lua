@@ -13,7 +13,6 @@ require("awful.autofocus")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
-local drop      = require("scratchdrop")
 local lain      = require("lain")
 -- }}}
 
@@ -92,10 +91,6 @@ if beautiful.wallpaper then
         gears.wallpaper.maximized(beautiful.wallpaper, s, true)
     end
 end
--- }}}
-
--- {{{ Menu
-require("freedesktop/freedesktop")
 -- }}}
 
 -- {{{ Wibox
@@ -179,9 +174,6 @@ netwidget = lain.widgets.net({
 networkwidget = wibox.widget.background()
 networkwidget:set_widget(netwidget)
 networkwidget:set_bgimage(beautiful.widget_bg)
-
--- Weather
-yawn = lain.widgets.yawn(123456)
 
 -- Separators
 first = wibox.widget.textbox('<span font="Tamsyn 4"> </span>')
@@ -405,9 +397,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r",      awesome.restart),
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
-    -- Dropdown terminal
-    awful.key({ modkey,	          }, "z",      function () drop(terminal) end),
-
     -- Widgets popups
     awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
     awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
@@ -555,12 +544,11 @@ awful.rules.rules = {
     { rule = { class = "URxvt" },
           properties = { opacity = 0.99 } },
 
-	  { rule = { class = "Gimp" },
-     	    properties = { tag = tags[1][4] } },
+    { rule = { class = "Gimp" },
+          properties = { floating = true } },
 
-    { rule = { class = "Gimp", role = "gimp-image-window" },
-          properties = { maximized_horizontal = true,
-                         maximized_vertical = true } },
+    { rule = { instance = "plugin-container" },
+          properties = { floating = true } },
 }
 -- }}}
 

@@ -47,7 +47,7 @@ theme.net_up                        = theme.icon_dir .. "/net_up.png"
 theme.net_down                      = theme.icon_dir .. "/net_down.png"
 
 -- lain related
-theme.useless_gap_width             = 10
+theme.useless_gap_width             = 5
 theme.layout_uselesstile            = theme.icon_dir .. "/uselesstile.png"
 theme.layout_uselesstileleft        = theme.icon_dir .. "/uselesstileleft.png"
 theme.layout_uselesstiletop         = theme.icon_dir .. "/uselesstiletop.png"
