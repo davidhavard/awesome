@@ -50,12 +50,6 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end),
 
-    -- Show Menu
-    awful.key({ modkey }, "w",
-        function ()
-            mymainmenu:show({ keygrabber = true })
-        end),
-
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
@@ -206,7 +200,6 @@ root.keys(globalkeys)
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))

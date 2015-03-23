@@ -7,12 +7,14 @@ local beautiful = require("beautiful")
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
+
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons,
 	                   size_hints_honor = false } },
+
     { rule = { class = "URxvt" },
           properties = { opacity = 0.99 } },
 
@@ -21,6 +23,9 @@ awful.rules.rules = {
 
     { rule = { class = "Chromium" },
           properties = { tag = tags[1][1] }},
+
+    { rule = { class = "hipchat" },
+          properties = { tag = tags[1][1], switchtotag = true }},
 
     { rule = { class = "Gimp" },
           properties = { floating = true } },
