@@ -8,8 +8,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("scrot -s") end),
 
     -- Tag browsing
-    awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
+    awful.key({ modkey }, "Left",   awful.screen.focus_relative(1)       ),
+    awful.key({ modkey }, "Right",  awful.screen.focus_relative(-1)       ),
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
     -- Non-empty tag browsing
@@ -53,7 +53,6 @@ globalkeys = awful.util.table.join(
     -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
-        mybottomwibox[mouse.screen].visible = not mybottomwibox[mouse.screen].visible
     end),
 
     -- On the fly useless gaps change
