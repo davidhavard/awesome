@@ -21,9 +21,6 @@ awful.rules.rules = {
     { rule = { class = "gvim" },
           properties = { tag = tags[2][1] }},
 
-    { rule = { class = "Chromium" },
-          properties = { tag = tags[1][1] }},
-
     { rule = { class = "hipchat" },
           properties = { tag = tags[1][1], switchtotag = true }},
 

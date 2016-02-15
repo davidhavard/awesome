@@ -8,8 +8,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "p", function() os.execute("scrot -s") end),
 
     -- Tag browsing
-    awful.key({ modkey }, "Left",   awful.screen.focus_relative(1)       ),
-    awful.key({ modkey }, "Right",  awful.screen.focus_relative(-1)       ),
+    awful.key({ modkey }, "Left",   awful.screen.focus_relative(1)),
+    awful.key({ modkey }, "Right",  awful.screen.focus_relative(-1)),
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
     -- Non-empty tag browsing

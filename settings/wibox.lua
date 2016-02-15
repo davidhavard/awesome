@@ -201,7 +201,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Set proper backgrounds, instead of beautiful.bg_normal
-    mywibox[s]:set_bg(beautiful.topbar_path .. screen[mouse.screen].workarea.width .. ".png")
+     mywibox[s]:set_bg("#000000")
 
 end
 -- }}}
