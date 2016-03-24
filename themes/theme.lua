@@ -9,10 +9,6 @@ theme                               = {}
 
 theme.icon_dir                      = os.getenv("HOME") .. "/.config/awesome/themes/icons"
 
-theme.wallpaper                     = os.getenv("HOME") .. "/.config/awesome/themes/wall.png"
-
-theme.topbar_path                   = "png:" .. theme.icon_dir .. "/topbar/"
-
 theme.font                          = "Anonymous Pro"
 theme.taglist_font                  = "Anonymous Pro"
 theme.fg_normal                     = "#D0D0D0"
