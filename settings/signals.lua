@@ -56,3 +56,24 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
       end)
 end
 -- }}}
+
+-- {{{ Focus on the first client when changing tags
+tag.connect_signal(
+  "property::selected",
+  function (t)
+    local selected = tostring(t.selected) == "false"
+    if selected then
+      local focus_timer = timer({ timeout = 0.01 })
+      focus_timer:connect_signal("timeout", function()
+        local c = awful.mouse.client_under_pointer()
+        if not (c == nil) then
+          client.focus = c
+          c:raise()
+        end
+        focus_timer:stop()
+      end)
+      focus_timer:start()
+    end
+  end
+)
+--}}}

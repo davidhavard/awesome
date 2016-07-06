@@ -1,4 +1,5 @@
 require("settings/error")
+require("settings/functions")
 require("settings/config")
 require("settings/tags")
 require("settings/wibox")
